@@ -1,15 +1,9 @@
+import type { MovieType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 
-type Movie = {
-    results: Array <{
-        id: number;
-        original_title: string;
-        poster_path: string;
-    }>;
-}
 
-export const TestView = () => {
-    const data = useGetData<Movie>(`https://api.themoviedb.org/3/movie/now_playing?api_key=`);
+export const NowPlayingView = () => {
+    const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/now_playing?api_key=`);
     if (!data) {    
         return <div>Loading...</div>;
      }
