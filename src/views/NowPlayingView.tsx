@@ -1,22 +1,35 @@
+import { useSearchParams } from "react-router-dom";
 import type { MovieType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
+import { ButtonGroup } from "@/components/ButtonGroup";
+import { ImageGrid } from "@/components/ImageGrid";
+
 
 
 export const NowPlayingView = () => {
-    const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/now_playing?api_key=`);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const selection = searchParams.get("selection") || "now_playing";
+    const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/${selection}`, {}, [selection]);
     if (!data) {    
         return <div>Loading...</div>;
      }
+     const gridDataResults = data.results.map((movie) => ({
+        id: movie.id,
+        imagePath: movie.poster_path,
+        primaryText: movie.original_title
+     }));
     return (
-
-
     <div>
-        {data.results.map((movie) => (
-            <div key={movie.id}>
-                <h3>{movie.original_title}</h3>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.original_title} />
-            </div>
-        ))}
+    <ButtonGroup
+    value = {selection}
+    onClick = {(value) => setSearchParams({ selection: value })}
+    options = {[
+        { label: "Now Playing", value: "now_playing" },
+        { label: "Top Rated", value: "top_rated" },
+        { label: "Upcoming", value: "upcoming" },
+    ]}
+    />
+    <ImageGrid results = {gridDataResults}></ImageGrid>
     </div>
   ) 
 }
