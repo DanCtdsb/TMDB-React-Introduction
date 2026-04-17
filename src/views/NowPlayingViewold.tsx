@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import type { MovieType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
@@ -6,8 +6,7 @@ import { ImageGrid } from "@/components/ImageGrid";
 
 
 
-export const NowPlayingView = () => {
-    const navigate = useNavigate();
+export const NowPlayingViewold = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selection = searchParams.get("selection") || "now_playing";
     const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/${selection}`, {}, [selection]);
@@ -23,7 +22,7 @@ export const NowPlayingView = () => {
     <div>
     <ButtonGroup
     value = {selection}
-    onClick = {(value) => navigate(`catagory/${value}`)}
+    onClick = {(value) => setSearchParams({ selection: value })}
     options = {[
         { label: "Now Playing", value: "now_playing" },
         { label: "Top Rated", value: "top_rated" },

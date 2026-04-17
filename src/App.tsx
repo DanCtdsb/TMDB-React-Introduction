@@ -12,8 +12,11 @@ export const App = () => {
 {/* </div> */}
   return ( 
     <Routes>
-      <Route path="/" element={<TestView></TestView>} />
-      <Route path="/movies" element={<NowPlayingView></NowPlayingView>} />
+      {/* <Route path="/" element={<TestView></TestView>} /> */}
+
+      <Route path="/movies" element={<NowPlayingView></NowPlayingView>} >
+        <Route path = "/category:selection" element={<NowPlayingView></NowPlayingView>} />
+      </Route>
       {/* <Route path="/tvShow" element={<AiringTodayView></AiringTodayView>} /> */}
       <Route path="*" element={<ErrorView />} />
 
