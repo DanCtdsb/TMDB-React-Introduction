@@ -3,13 +3,14 @@ import type { TelevisionType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
+import { TELEVISION_ENDPOINT } from "@/core/constants";
 
 
 
 export const TelevisionView = () => {
     const navigate = useNavigate();
     const { selection = "airing_today" } = useParams();
-    const data = useGetData<TelevisionType>(`https://api.themoviedb.org/3/tv/${selection}`, {}, [selection]);
+    const data = useGetData<TelevisionType>(`${TELEVISION_ENDPOINT}${selection}`, {}, [selection]);
     if (!data) {    
         return <div>Loading...</div>;
      }
