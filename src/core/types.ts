@@ -6,7 +6,7 @@ export type MovieType = {
     }>;
 }
 
-export type tvType = {
+export type TelevisionType = {
     results: Array <{
         id: number;
         original_name: string;

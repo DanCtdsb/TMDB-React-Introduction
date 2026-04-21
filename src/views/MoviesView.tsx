@@ -1,15 +1,15 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import type { MovieType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
+import { SearchView } from "./SearchView";
 
 
 
-export const NowPlayingView = () => {
+export const MoviesView = () => {
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
-    const selection = searchParams.get("selection") || "now_playing";
+    const { selection = "now_playing" } = useParams();
     const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/${selection}`, {}, [selection]);
     if (!data) {    
         return <div>Loading...</div>;
@@ -21,11 +21,13 @@ export const NowPlayingView = () => {
      }));
     return (
     <div>
+    <SearchView></SearchView>
     <ButtonGroup
     value = {selection}
-    onClick = {(value) => navigate(`catagory/${value}`)}
+    onClick = {(value) => navigate(`/movies/category/${value}`)}
     options = {[
         { label: "Now Playing", value: "now_playing" },
+        { label: "Popular", value: "popular" },
         { label: "Top Rated", value: "top_rated" },
         { label: "Upcoming", value: "upcoming" },
     ]}

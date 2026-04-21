@@ -8,7 +8,7 @@ export const useGetData = <T,>(url: string, params: Record<string, any>, deps: a
         const fetchData = async () => {
             try {
                 const response = await axios.get<T>(url, 
-                    { params: { api_key: API_KEY } , ...params}
+                    { params: { api_key: API_KEY, ...params } }
                 );
                 setData(response.data);
             } catch (error) {

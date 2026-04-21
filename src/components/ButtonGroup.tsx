@@ -1,5 +1,5 @@
 type ButtonGroupProps = {
-  value: string;
+  value: string | undefined;
   onClick: (value: string) => void;
   options: { label: string; value: string }[];
 };
