@@ -30,6 +30,7 @@ export const NowPlayingViewold = () => {
     ]}
     />
     <ImageGrid results = {gridDataResults}></ImageGrid>
+
     </div>
   ) 
 }

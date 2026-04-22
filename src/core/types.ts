@@ -4,6 +4,7 @@ export type MovieType = {
         original_title: string;
         poster_path: string;
     }>;
+    total_pages: number;
 }
 
 export type TelevisionType = {

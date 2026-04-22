@@ -5,13 +5,16 @@ import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
 import { SearchView } from "./SearchView";
 import { MOVIE_ENDPOINT } from "@/core/constants";
+import { Pagination } from "@/components/Pagination";
+import { useState } from "react";
 
 
 
 export const MoviesView = () => {
     const navigate = useNavigate();
     const { selection = "now_playing" } = useParams();
-    const data = useGetData<MovieType>(`${MOVIE_ENDPOINT}${selection}`, {}, [selection]);
+    const [page, setPage] = useState<number>(1)
+    const data = useGetData<MovieType>(`${MOVIE_ENDPOINT}${selection}`, {page}, [selection, page]);
     if (!data) {    
         return <div>Loading...</div>;
      }
@@ -34,6 +37,7 @@ export const MoviesView = () => {
     ]}
     />
     <ImageGrid results = {gridDataResults}></ImageGrid>
+    <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>
   ) 
 }
