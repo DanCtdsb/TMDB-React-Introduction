@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import type { MovieType } from "../core/types";
+import type { MediaType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
@@ -9,7 +9,7 @@ import { ImageGrid } from "@/components/ImageGrid";
 export const NowPlayingViewold = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const selection = searchParams.get("selection") || "now_playing";
-    const data = useGetData<MovieType>(`https://api.themoviedb.org/3/movie/${selection}`, {}, [selection]);
+    const data = useGetData<MediaType>(`https://api.themoviedb.org/3/movie/${selection}`, {}, [selection]);
     if (!data) {    
         return <div>Loading...</div>;
      }

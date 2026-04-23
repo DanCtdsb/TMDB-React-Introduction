@@ -5,8 +5,9 @@ export const Header = () => {
     return(
         <header>
             <LinkGroup options={[
-                {label: "Movies", to: "movies"},
-                {label: "TV", to: "television"}
+                {label: "Movies", to: "/movies"},
+                {label: "TV", to: "/television"},
+                {label: "Trending", to: "/trending"}
             ]}/>
         </header>
     )

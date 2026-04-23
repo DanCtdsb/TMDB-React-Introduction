@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import type { MovieType } from "../core/types";
+import type { MediaType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
@@ -14,7 +14,7 @@ export const MoviesView = () => {
     const navigate = useNavigate();
     const { selection = "now_playing" } = useParams();
     const [page, setPage] = useState<number>(1)
-    const data = useGetData<MovieType>(`${MOVIE_ENDPOINT}${selection}`, {page}, [selection, page]);
+    const data = useGetData<MediaType>(`${MOVIE_ENDPOINT}${selection}`, {page}, [selection, page]);
     if (!data) {    
         return <div>Loading...</div>;
      }

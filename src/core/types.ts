@@ -1,16 +1,9 @@
-export type MovieType = {
+export type MediaType = {
     results: Array <{
         id: number;
-        original_title: string;
+        original_title?: string;
+        original_name?: string;
         poster_path: string;
     }>;
     total_pages: number;
-}
-
-export type TelevisionType = {
-    results: Array <{
-        id: number;
-        original_name: string;
-        poster_path: string;
-    }>;
 }

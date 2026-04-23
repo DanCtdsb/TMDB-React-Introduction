@@ -1,6 +1,6 @@
 import { ImageGrid } from "@/components/ImageGrid"
 import { SEARCH_ENDPOINT } from "@/core/constants"
-import type { TelevisionType } from "@/core/types"
+import type { MediaType } from "@/core/types"
 import { useDebounce } from "@/hooks/useDebounce"
 import { useGetData } from "@/hooks/useGetData"
 import { useState } from "react"
@@ -9,7 +9,7 @@ import { useState } from "react"
 export const SearchView = () => {
     const [query, setQuery] = useState("")
     const debouncedQuery = useDebounce(query, 500)
-    const data = useGetData<TelevisionType>(`${SEARCH_ENDPOINT}`, {query:debouncedQuery}, [debouncedQuery]);
+    const data = useGetData<MediaType>(`${SEARCH_ENDPOINT}`, {query:debouncedQuery}, [debouncedQuery]);
     if (!data) {    
         return <div>Loading...</div>;
      }
