@@ -16,8 +16,8 @@ export const TelevisionView = () => {
      }
      const gridDataResults = data.results.map((television) => ({
         id: television.id,
-        imagePath: television.poster_path,
-        primaryText: television.original_name
+        imagePath: television.poster_path || "",
+        primaryText: television.original_name || ""
      }));
     return (
     <div>

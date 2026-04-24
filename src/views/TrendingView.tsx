@@ -21,8 +21,8 @@ export const TrendingView = () => {
      }
      const gridDataResults = data.results.map((media) => ({
         id: media.id,
-        imagePath: media.poster_path,
-        primaryText: media.original_title || media.original_title
+        imagePath: media.poster_path || "",
+        primaryText: media.original_title || media.original_name || ""
      }));
     return (
         <div>

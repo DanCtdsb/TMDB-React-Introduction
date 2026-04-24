@@ -6,6 +6,7 @@ import { TelevisionView } from "./views/TelevisionView";
 import { ErrorView } from "./views/ErrorView";
 import { MainLayout } from "./layouts/MainLayout";
 import { TrendingView } from "./views/TrendingView";
+import { SearchView } from "./views/SearchView";
 
 export const App = () => {
   {
@@ -39,6 +40,7 @@ export const App = () => {
           />
         </Route>
         <Route path="/trending/:selection" element={<TrendingView/>} />
+        <Route path="/search" element={<SearchView />} />
       </Route>
       {/* <Route path="/tvShow" element={<AiringTodayView></AiringTodayView>} /> */}
       <Route path="*" element={<ErrorView />} />

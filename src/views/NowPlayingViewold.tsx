@@ -15,8 +15,8 @@ export const NowPlayingViewold = () => {
      }
      const gridDataResults = data.results.map((movie) => ({
         id: movie.id,
-        imagePath: movie.poster_path,
-        primaryText: movie.original_title
+        imagePath: movie.poster_path || "",
+        primaryText: movie.original_title || ""
      }));
     return (
     <div>

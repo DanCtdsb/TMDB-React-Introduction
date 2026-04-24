@@ -3,7 +3,6 @@ import type { MediaType } from "../core/types";
 import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
-import { SearchView } from "./SearchView";
 import { MOVIE_ENDPOINT } from "@/core/constants";
 import { Pagination } from "@/components/Pagination";
 import { useState } from "react";
@@ -20,12 +19,11 @@ export const MoviesView = () => {
      }
      const gridDataResults = data.results.map((movie) => ({
         id: movie.id,
-        imagePath: movie.poster_path,
-        primaryText: movie.original_title
+        imagePath: movie.poster_path || "",
+        primaryText: movie.original_title || ""
      }));
     return (
     <div>
-    <SearchView></SearchView>
     <ButtonGroup
     value = {selection}
     onClick = {(value) => navigate(`/movies/category/${value}`)}

@@ -3,7 +3,8 @@ export type MediaType = {
         id: number;
         original_title?: string;
         original_name?: string;
-        poster_path: string;
+        poster_path?: string;
+        profile_path?: string;
     }>;
     total_pages: number;
 }
