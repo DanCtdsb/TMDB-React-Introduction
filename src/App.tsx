@@ -1,26 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-// import { AiringTodayView } from "./views/AiringTodayView"
 import { MoviesView } from "./views/MoviesView";
-// import { TestView } from "./views/testView";
 import { TelevisionView } from "./views/TelevisionView";
 import { ErrorView } from "./views/ErrorView";
 import { MainLayout } from "./layouts/MainLayout";
 import { TrendingView } from "./views/TrendingView";
 import { SearchView } from "./views/SearchView";
+import {MovieView} from "./views/MovieView";
 
 export const App = () => {
-  {
-    /* <div> */
-  }
-  {
-    /* <MoviesView></MoviesView> */
-  }
-  {
-    /* <AiringTodayView></AiringTodayView> */
-  }
-  {
-    /* </div> */
-  }
   return (
     <Routes>
       <Route element={<MainLayout />}>
@@ -32,6 +19,7 @@ export const App = () => {
         />
 
         <Route path="/movies/category/:selection" element={<MoviesView/>} />
+        <Route path="/movies/:id" element={<MovieView/>} />
 
         <Route path="/television" element={<TelevisionView/>}>
           <Route
@@ -42,7 +30,6 @@ export const App = () => {
         <Route path="/trending/:selection" element={<TrendingView/>} />
         <Route path="/search" element={<SearchView />} />
       </Route>
-      {/* <Route path="/tvShow" element={<AiringTodayView></AiringTodayView>} /> */}
       <Route path="*" element={<ErrorView />} />
     </Routes>
   );

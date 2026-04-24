@@ -5,7 +5,7 @@ import { Pagination } from "@/components/Pagination"
 import { TRENDING_ENDPOINT } from "@/core/constants"
 import type { MediaType } from "@/core/types"
 import { useGetData } from "@/hooks/useGetData"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 
 
@@ -15,7 +15,9 @@ export const TrendingView = () => {
     const {selection = "movies"} = useParams();
     const interval = searchParams.get("interval") || "day";
     const data = useGetData<MediaType>(`${TRENDING_ENDPOINT}/${selection}/${interval}`, [page, selection], [page, selection, interval]);
-
+      useEffect(() => {
+        setPage(1)
+      }, [selection])
     if (!data) {    
         return <div>Loading...</div>;
      }
@@ -31,8 +33,8 @@ export const TrendingView = () => {
                 {label: "Week", value: "week"}
             ]}/>
             <LinkGroup  options={[
-                {label: "movie", to: "/trending/movie"},
-                {label: "tv", to: "/trending/tv"}
+                {label: "movie", to: `/trending/movie?interval=${interval}`},
+                {label: "tv", to: `/trending/tv?interval=${interval}`}
             ]}/>
             <ImageGrid results={gridDataResults}/>
             <Pagination page={page} maxPage={data.total_pages} onClick={setPage}/>

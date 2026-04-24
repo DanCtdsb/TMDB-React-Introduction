@@ -29,8 +29,7 @@ export const NowPlayingViewold = () => {
         { label: "Upcoming", value: "upcoming" },
     ]}
     />
-    <ImageGrid results = {gridDataResults}></ImageGrid>
-
+    <ImageGrid results = {gridDataResults}></ImageGrid>  
     </div>
   ) 
 }

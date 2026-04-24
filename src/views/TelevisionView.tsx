@@ -4,13 +4,19 @@ import { useGetData } from "../hooks/useGetData";
 import { ButtonGroup } from "@/components/ButtonGroup";
 import { ImageGrid } from "@/components/ImageGrid";
 import { TELEVISION_ENDPOINT } from "@/core/constants";
+import { Pagination } from "@/components/Pagination";
+import { useEffect, useState } from "react";
 
 
 
 export const TelevisionView = () => {
     const navigate = useNavigate();
     const { selection = "airing_today" } = useParams();
-    const data = useGetData<MediaType>(`${TELEVISION_ENDPOINT}${selection}`, {}, [selection]);
+    const [page, setPage] = useState<number>(1)
+    const data = useGetData<MediaType>(`${TELEVISION_ENDPOINT}${selection}`, {page}, [selection, page]);
+      useEffect(() => {
+        setPage(1)
+      }, [selection])
     if (!data) {    
         return <div>Loading...</div>;
      }
@@ -32,6 +38,7 @@ export const TelevisionView = () => {
     ]}
     />
     <ImageGrid results = {gridDataResults}></ImageGrid>
+    <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>
   ) 
 }
