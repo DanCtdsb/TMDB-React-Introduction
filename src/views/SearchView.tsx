@@ -5,9 +5,10 @@ import type { MediaType } from "@/core/types";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useGetData } from "@/hooks/useGetData";
 import { useEffect, useState } from "react";
-import {useSearchParams } from "react-router-dom";
+import {useSearchParams, useNavigate} from "react-router-dom";
 
 export const SearchView = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const queryValue = searchParams.get("q") || "";
   const debouncedQuery = useDebounce(queryValue, 500);
@@ -33,7 +34,7 @@ export const SearchView = () => {
   }));
   return (
     <div>
-      <ImageGrid results={gridDataResults} />
+      <ImageGrid results={gridDataResults}  onClick={(id) => navigate(`/movies/${id}`)}/>
         <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>
   );
