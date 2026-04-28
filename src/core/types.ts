@@ -9,7 +9,7 @@ export type MediaType = {
     total_pages: number;
 }
 
-export type MovieRespsonse = {
+export type MediaResponse = {
   id: number;
   title: string;
   overview: string;

@@ -29,6 +29,10 @@ export const App = () => {
         <Route path="/trending/:selection" element={<TrendingView/>} />
         <Route path="/search" element={<SearchView />} />
         <Route path="/movies/:id" element={<MovieView/>} />
+          <Route path="credits" element={<CreditsView/>}/>
+          <Route path="trailer" element={<trailerView/>}/>
+          <Route path="reviews" element={<ReviewsView/>}/>
+
       </Route>
       <Route path="*" element={<ErrorView />} />
     </Routes>
