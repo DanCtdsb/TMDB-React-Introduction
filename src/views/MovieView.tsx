@@ -9,12 +9,7 @@ import { Outlet, useNavigate, useParams } from "react-router-dom"
 export const MovieView = () => {
     const navigate = useNavigate()
     const { id } = useParams()
-    const data = useGetData<MediaResponse>(`${MOVIE_ENDPOINT}${id}`, { append_to_response: 'videos' }, [id])
-
-    const trailerVideo =
-    data?.videos?.results.find(
-      (video) => video.site === 'YouTube' && video.type === 'Trailer' && video.name?.toLowerCase().includes('official')
-    ) || data?.videos?.results.find((video) => video.site === 'YouTube' && video.type === 'Trailer');
+    const data = useGetData<MediaResponse>(`${MOVIE_ENDPOINT}${id}`, {}, [id])
 
     if (!data) {
         return <div>Loading...</div>
@@ -32,18 +27,6 @@ export const MovieView = () => {
                 <img className="w-[220px] h-[330px] object-cover rounded-xl" src={`${IMAGE_BASE_URL}${data.poster_path}`} alt={data.title} />
                 <h1>{data.title}</h1>
                 <p>{data.overview}</p>
-                <div>
-                    {trailerVideo && (
-                        <iframe
-                            width="560"
-                            height="315"
-                            src={`https://www.youtube.com/embed/${trailerVideo.key}`}
-                            title={trailerVideo.name}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        />
-                    )}
-                </div>
                 <KeyValueLabels label="Release Date" value={data.release_date} />
                 <KeyValueLabels label="Rating" value={data.vote_average} />
                 <LinkGroup options={[

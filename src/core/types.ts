@@ -22,6 +22,11 @@ export type MediaResponse = {
     original_title: string;
     poster_path: string;
   }>;
+  
+  total_pages: number;
+};
+
+export type TrailerResponse = {
   videos?: {
     results: Array<{
       key: string;
@@ -30,5 +35,4 @@ export type MediaResponse = {
       type: string;
     }>;
   };
-  total_pages: number;
-};
+}

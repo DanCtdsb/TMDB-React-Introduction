@@ -6,6 +6,9 @@ import { MainLayout } from "./layouts/MainLayout";
 import { TrendingView } from "./views/TrendingView";
 import { SearchView } from "./views/SearchView";
 import {MovieView} from "./views/MovieView";
+import { CreditsView } from "./views/CreditsView";
+import { ReviewsView } from "./views/ReviewsView";
+import { TrailerView } from "./views/TrailerView";
 
 export const App = () => {
   return (
@@ -28,10 +31,11 @@ export const App = () => {
         </Route>
         <Route path="/trending/:selection" element={<TrendingView/>} />
         <Route path="/search" element={<SearchView />} />
-        <Route path="/movies/:id" element={<MovieView/>} />
+        <Route path="/movies/:id" element={<MovieView/>}>
           <Route path="credits" element={<CreditsView/>}/>
-          <Route path="trailer" element={<trailerView/>}/>
+          <Route path="trailer" element={<TrailerView/>}/>
           <Route path="reviews" element={<ReviewsView/>}/>
+        </Route>
 
       </Route>
       <Route path="*" element={<ErrorView />} />
