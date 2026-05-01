@@ -1,12 +1,12 @@
 import { BASE_ENDPOINT} from "@/core/constants";
 import type { ReviewsResponse } from "@/core/types";
-import { useGetData } from "@/hooks/useGetData";
+import { useGetData } from "@/hooks/index";
 import { useParams } from "react-router-dom";
 
 
 export const ReviewsView = () => {
     const { id, mediaType } = useParams();
-    const data = useGetData<ReviewsResponse>(`${BASE_ENDPOINT}${mediaType}/${id}/reviews`, {}, [id, mediaType]);
+    const data = useGetData<ReviewsResponse>(`${BASE_ENDPOINT}/${mediaType}/${id}/reviews`, {}, [id, mediaType]);
 
     return (
         <div>

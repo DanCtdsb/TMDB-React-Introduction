@@ -1,10 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import type { MediaType} from "../core/types";
-import { useGetData } from "../hooks/useGetData";
-import { ButtonGroup } from "@/components/ButtonGroup";
-import { ImageGrid } from "@/components/ImageGrid";
+import type { MediaType} from "@/core/types";
+import { useGetData } from "@/hooks/useGetData";
+import { ButtonGroup, ImageGrid, Pagination} from "@/components/index";;
 import { TELEVISION_ENDPOINT } from "@/core/constants";
-import { Pagination } from "@/components/Pagination";
 import { useEffect, useState } from "react";
 
 
@@ -13,7 +11,7 @@ export const TelevisionView = () => {
     const navigate = useNavigate();
     const { selection = "airing_today" } = useParams();
     const [page, setPage] = useState<number>(1)
-    const data = useGetData<MediaType>(`${TELEVISION_ENDPOINT}${selection}`, {page}, [selection, page]);
+    const data = useGetData<MediaType>(`${TELEVISION_ENDPOINT}/${selection}`, {page}, [selection, page]);
       useEffect(() => {
         setPage(1)
       }, [selection])

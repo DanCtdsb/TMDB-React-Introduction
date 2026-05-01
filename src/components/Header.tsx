@@ -2,14 +2,14 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { LinkGroup } from "./LinkGroup";
 import { SearchBar } from "./SearchBar";
 import { ButtonGroup } from "./ButtonGroup";
+import { useState } from "react";
 
 export const Header = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const queryValue = searchParams.get("q") || "";
-  const mediaType = searchParams.get("media") || "movie";
+  const [mediaState, setMediaState] = useState<string>("movie");
   const location = useLocation();
-
   return (
     <header className="flex items-center gap-3 bg-[#111] rounded-xl px-4 py-3">
       <LinkGroup
@@ -21,16 +21,18 @@ export const Header = () => {
       />
       <SearchBar
         value={queryValue}
-        onChange={(value) => navigate(`/search?q=${value}&media=${mediaType}`)}
+        onChange={(value) => navigate(`/search?q=${value}&media=${mediaState}`)}
       />
       <ButtonGroup
-        value={mediaType}
+        value={mediaState}
         onClick={(value) => {
-          if (location.pathname === "/search")
+          if (location.pathname === "/search") {
             navigate(`/search?q=${queryValue}&media=${value}`);
+          }
+          setMediaState(value)
         }}
         options={[
-          { label: "Movies", value: "movie" },
+          { label: "Movies", value: "movie"},
           { label: "Television", value: "tv" },
           { label: "Person", value: "person" },
         ]}

@@ -1,10 +1,7 @@
-import { ButtonGroup } from "@/components/ButtonGroup"
-import { ImageGrid } from "@/components/ImageGrid"
-import { LinkGroup } from "@/components/LinkGroup"
-import { Pagination } from "@/components/Pagination"
+import {ButtonGroup, ImageGrid, LinkGroup, Pagination} from "@/components/index"
 import { TRENDING_ENDPOINT } from "@/core/constants"
 import type { MediaType } from "@/core/types"
-import { useGetData } from "@/hooks/useGetData"
+import { useGetData } from "@/hooks/index"
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 

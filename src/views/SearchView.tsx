@@ -1,9 +1,7 @@
-import { ImageGrid } from "@/components/ImageGrid";
-import { Pagination } from "@/components/Pagination";
+import { ImageGrid, Pagination} from "@/components/index";
 import { SEARCH_ENDPOINT } from "@/core/constants";
 import type { MediaType } from "@/core/types";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useGetData } from "@/hooks/useGetData";
+import { useDebounce, useGetData} from "@/hooks/index";
 import { useEffect, useState } from "react";
 import {useSearchParams, useNavigate} from "react-router-dom";
 

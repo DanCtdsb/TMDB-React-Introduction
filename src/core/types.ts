@@ -52,3 +52,14 @@ export type ReviewsResponse = {
     content: string;
   }>;
 };
+
+export type SeasonsResponse = {
+  seasons: Array<{
+    id: string;
+    name: string;
+    posterPath: string;
+    episodeCount: number;
+    seasonNumber: number;
+    voteAverage:string;
+  }>;
+};

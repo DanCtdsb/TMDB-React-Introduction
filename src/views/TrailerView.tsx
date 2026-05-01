@@ -1,6 +1,6 @@
 import { BASE_ENDPOINT} from "@/core/constants"
 import type { TrailerResponse } from "@/core/types"
-import { useGetData } from "@/hooks/useGetData"
+import { useGetData } from "@/hooks/index"
 import { useParams } from "react-router-dom"
 
 

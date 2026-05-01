@@ -1,14 +1,14 @@
 import { ImageGrid } from "@/components/ImageGrid";
 import { BASE_ENDPOINT } from "@/core/constants";
 import type { CreditsResponse } from "@/core/types";
-import { useGetData } from "@/hooks/useGetData";
+import { useGetData } from "@/hooks/index";
 import { useNavigate, useParams } from "react-router-dom";
 
 
 export const CreditsView = () => {
     const navigate = useNavigate();
     const { id, mediaType} = useParams();
-    const data = useGetData<CreditsResponse>(`${BASE_ENDPOINT}${mediaType}/${id}/credits`, {}, [id, mediaType]);
+    const data = useGetData<CreditsResponse>(`${BASE_ENDPOINT}/${mediaType}/${id}/credits`, {}, [id, mediaType]);
 
     const gridDataResults = data?.cast.map((credit) => ({
         id: credit.id,
