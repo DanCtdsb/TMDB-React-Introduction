@@ -1,15 +1,15 @@
 import { LinkGroup } from "@/components/LinkGroup"
 import { KeyValueLabels } from "@/components/KeyValueLabels"
 import { Modal } from "@/components/Modal"
-import { IMAGE_BASE_URL, MOVIE_ENDPOINT, ORIGINAL_IMAGE_BASE_URL } from "@/core/constants"
+import { BASE_ENDPOINT, IMAGE_BASE_URL, ORIGINAL_IMAGE_BASE_URL } from "@/core/constants"
 import type {MediaResponse } from "@/core/types"
 import { useGetData } from "@/hooks/useGetData"
 import { Outlet, useNavigate, useParams } from "react-router-dom"
 
 export const MovieView = () => {
     const navigate = useNavigate()
-    const { id } = useParams()
-    const data = useGetData<MediaResponse>(`${MOVIE_ENDPOINT}${id}`, {}, [id])
+    const { id, mediaType } = useParams()
+    const data = useGetData<MediaResponse>(`${BASE_ENDPOINT}${mediaType}/${id}`, {}, [id, mediaType])
 
     if (!data) {
         return <div>Loading...</div>

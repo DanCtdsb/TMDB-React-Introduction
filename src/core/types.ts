@@ -27,12 +27,28 @@ export type MediaResponse = {
 };
 
 export type TrailerResponse = {
-  videos?: {
-    results: Array<{
-      key: string;
-      name: string;
-      site: string;
-      type: string;
-    }>;
-  };
-}
+  id: number;
+  results: Array<{
+    key: string;
+    name: string;
+    site: string;
+    type: string;
+  }>;
+};
+
+export type CreditsResponse = {
+  cast: Array<{
+    id: number;
+    name: string;
+    profile_path: string;
+    character: string;
+  }>;
+};
+
+export type ReviewsResponse = {
+  results: Array<{
+    id: string;
+    author: string;
+    content: string;
+  }>;
+};

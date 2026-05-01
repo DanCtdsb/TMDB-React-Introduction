@@ -31,7 +31,7 @@ export const App = () => {
         </Route>
         <Route path="/trending/:selection" element={<TrendingView/>} />
         <Route path="/search" element={<SearchView />} />
-        <Route path="/movies/:id" element={<MovieView/>}>
+        <Route path="/:mediaType/:id" element={<MovieView/>}>
           <Route path="credits" element={<CreditsView/>}/>
           <Route path="trailer" element={<TrailerView/>}/>
           <Route path="reviews" element={<ReviewsView/>}/>

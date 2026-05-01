@@ -11,7 +11,7 @@ export const Header = () => {
   const location = useLocation();
 
   return (
-    <header>
+    <header className="flex items-center gap-3 bg-[#111] rounded-xl px-4 py-3">
       <LinkGroup
         options={[
           { label: "Movies", to: "/movies" },
@@ -25,7 +25,10 @@ export const Header = () => {
       />
       <ButtonGroup
         value={mediaType}
-        onClick={(value) => {if (location.pathname === "/search") navigate(`/search?q=${queryValue}&media=${value}`)}}
+        onClick={(value) => {
+          if (location.pathname === "/search")
+            navigate(`/search?q=${queryValue}&media=${value}`);
+        }}
         options={[
           { label: "Movies", value: "movie" },
           { label: "Television", value: "tv" },
