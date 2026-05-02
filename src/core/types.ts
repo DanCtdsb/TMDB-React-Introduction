@@ -55,11 +55,10 @@ export type ReviewsResponse = {
 
 export type SeasonsResponse = {
   seasons: Array<{
-    id: string;
+    season_number: number;
     name: string;
-    posterPath: string;
-    episodeCount: number;
-    seasonNumber: number;
-    voteAverage:string;
+    poster_path: string;
+    episode_count: string;
+    vote_average: string;
   }>;
 };

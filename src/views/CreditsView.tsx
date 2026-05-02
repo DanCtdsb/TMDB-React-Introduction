@@ -1,7 +1,7 @@
-import { ImageGrid } from "@/components/ImageGrid";
+import { ImageGrid } from "@/components";
 import { BASE_ENDPOINT } from "@/core/constants";
 import type { CreditsResponse } from "@/core/types";
-import { useGetData } from "@/hooks/index";
+import { useGetData } from "@/hooks";
 import { useNavigate, useParams } from "react-router-dom";
 
 

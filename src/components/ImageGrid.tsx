@@ -4,6 +4,7 @@ type ImageGridProps = {
       imagePath: string | null;
       primaryText: string;
       secondaryText?: string;
+      tertiaryText?: string;
     }>;
     onClick?: (id: number) => void;
   };

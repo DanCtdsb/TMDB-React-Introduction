@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import type { MediaType } from "@/core/types";
 import { useGetData } from "@/hooks/useGetData";
-import { ButtonGroup, ImageGrid, Pagination} from "@/components/index";
+import { ButtonGroup, ImageGrid, Pagination} from "@/components";
 import { MOVIE_ENDPOINT } from "@/core/constants";
 import { useEffect, useState } from "react";
 
@@ -27,7 +27,7 @@ export const MoviesView = () => {
     <div>
     <ButtonGroup
     value = {selection}
-    onClick = {(value) => navigate(`/movies/category/${value}`)}
+    onClick = {(value) => navigate(`/movie/category/${value}`)}
     options = {[
         { label: "Now Playing", value: "now_playing" },
         { label: "Popular", value: "popular" },
@@ -35,7 +35,7 @@ export const MoviesView = () => {
         { label: "Upcoming", value: "upcoming" },
     ]}
     />
-    <ImageGrid results = {gridDataResults} onClick={(id) => navigate(`/movies/${id}`)}></ImageGrid>
+    <ImageGrid results = {gridDataResults} onClick={(id) => navigate(`/movie/${id}`)}></ImageGrid>
     <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>
   ) 

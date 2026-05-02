@@ -1,15 +1,16 @@
-import {ButtonGroup, ImageGrid, LinkGroup, Pagination} from "@/components/index"
+import {ButtonGroup, ImageGrid, LinkGroup, Pagination} from "@/components"
 import { TRENDING_ENDPOINT } from "@/core/constants"
 import type { MediaType } from "@/core/types"
-import { useGetData } from "@/hooks/index"
+import { useGetData } from "@/hooks"
 import { useEffect, useState } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 
 
 export const TrendingView = () => {
+    const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams()
     const [page, setPage] = useState<number>(1);
-    const {selection = "movies"} = useParams();
+    const {selection = "movie"} = useParams();
     const interval = searchParams.get("interval") || "day";
     const data = useGetData<MediaType>(`${TRENDING_ENDPOINT}/${selection}/${interval}`, [page, selection], [page, selection, interval]);
       useEffect(() => {
@@ -33,7 +34,7 @@ export const TrendingView = () => {
                 {label: "movie", to: `/trending/movie?interval=${interval}`},
                 {label: "tv", to: `/trending/tv?interval=${interval}`}
             ]}/>
-            <ImageGrid results={gridDataResults}/>
+            <ImageGrid results={gridDataResults} onClick={(id) => navigate(`/${selection}/${id}`)}/>
             <Pagination page={page} maxPage={data.total_pages} onClick={setPage}/>
         </div>
     )

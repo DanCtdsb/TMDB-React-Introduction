@@ -1,10 +1,29 @@
-// import { TELEVISION_ENDPOINT } from "@/core/constants"
+import { ImageGrid } from "@/components/ImageGrid"
+import { TELEVISION_ENDPOINT } from "@/core/constants"
+import type { SeasonsResponse } from "@/core/types"
+import { useGetData } from "@/hooks"
+import { useNavigate, useParams } from "react-router-dom"
 
 
-// export const SeasonsView = () => {
-//     const { series_id} = useParams()
-//     const data = useGetData<MediaResponse>(`${TELEVISION_ENDPOINT}/${series_id}/${season}`, {}, [season, series_id])
-//     return (
-//         <div></div>
-//     )
-// }
+export const SeasonsView = () => {
+    const navigate = useNavigate();
+    const { id } = useParams()
+    const data = useGetData<SeasonsResponse>(`${TELEVISION_ENDPOINT}/${id}`, {}, [id])
+    if (!data) {    
+        return <div>Loading...</div>;
+     } 
+    
+    const gridDataResults = data.seasons.map((season) => ({
+        id: season.season_number,
+        imagePath: season.poster_path || "",
+        primaryText: season.name || "",
+        secondaryText: season.episode_count || "",
+        tertiaryText: season.vote_average || ""
+     }));
+    return (
+        <div>
+            <h2 className="text-2xl font-bold">Seasons</h2>
+            <ImageGrid results={gridDataResults} onClick={(seasonNumber) => {navigate(`/tv/${id}/season/${seasonNumber}`)}} />
+        </div>
+    )
+}

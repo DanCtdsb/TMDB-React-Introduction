@@ -14,7 +14,7 @@ export const Header = () => {
     <header className="flex items-center gap-3 bg-[#111] rounded-xl px-4 py-3">
       <LinkGroup
         options={[
-          { label: "Movies", to: "/movies" },
+          { label: "Movies", to: "/movie" },
           { label: "TV", to: "/television" },
           { label: "Trending", to: "/trending/movie" },
         ]}

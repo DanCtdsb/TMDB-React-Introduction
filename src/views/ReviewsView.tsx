@@ -1,6 +1,6 @@
 import { BASE_ENDPOINT} from "@/core/constants";
 import type { ReviewsResponse } from "@/core/types";
-import { useGetData } from "@/hooks/index";
+import { useGetData } from "@/hooks";
 import { useParams } from "react-router-dom";
 
 

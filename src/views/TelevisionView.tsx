@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import type { MediaType} from "@/core/types";
-import { useGetData } from "@/hooks/useGetData";
-import { ButtonGroup, ImageGrid, Pagination} from "@/components/index";;
+import { useGetData } from "@/hooks";
+import { ButtonGroup, ImageGrid, Pagination} from "@/components";;
 import { TELEVISION_ENDPOINT } from "@/core/constants";
 import { useEffect, useState } from "react";
 
@@ -35,7 +35,7 @@ export const TelevisionView = () => {
         { label: "Top Rated", value: "top_rated" },
     ]}
     />
-    <ImageGrid results = {gridDataResults}></ImageGrid>
+    <ImageGrid results = {gridDataResults} onClick={(id) => navigate(`/tv/${id}`)}/>
     <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>
   ) 
