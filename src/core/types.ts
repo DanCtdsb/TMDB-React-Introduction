@@ -90,3 +90,14 @@ export type PersonResponse = {
   birthday: string;
   place_of_birth: string;
 };
+
+export type CareerResponse = {
+  cast: Array<{
+    id: number;
+    original_title?: string;
+    original_name?: string;
+    poster_path?: string;
+    profile_path?: string;
+    media_type: string;
+  }>;
+};
