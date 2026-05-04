@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom"
 
 export const TrailerView = () => {
     const { id, mediaType } = useParams()
-    const data = useGetData<TrailerResponse>(`${BASE_ENDPOINT}${mediaType}/${id}/videos`, {}, [id, mediaType])
-
+    const data = useGetData<TrailerResponse>(`${BASE_ENDPOINT}/${mediaType}/${id}/videos`, {}, [id, mediaType])
+    console.log(data)
     const allVideos = data?.results || [];
 
     const officialTrailers = allVideos.filter(

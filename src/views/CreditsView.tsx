@@ -9,7 +9,6 @@ export const CreditsView = () => {
     const navigate = useNavigate();
     const { id, mediaType} = useParams();
     const data = useGetData<CreditsResponse>(`${BASE_ENDPOINT}/${mediaType}/${id}/credits`, {}, [id, mediaType]);
-
     const gridDataResults = data?.cast.map((credit) => ({
         id: credit.id,
         imagePath: credit.profile_path || "",

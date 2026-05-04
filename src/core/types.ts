@@ -62,3 +62,31 @@ export type SeasonsResponse = {
     vote_average: string;
   }>;
 };
+
+export type SeasonDetailsResponse = {
+  seasons: Array<{
+    season_number: number;
+    air_date: string;
+    name: string;
+    overview: string;
+  }>
+};
+
+export type EpisodesResponse = {
+  episodes: Array<{
+    id: number;
+    name: string;
+    still_path: string;
+    overview: string;
+    vote_average: string;
+  }>;
+};
+
+export type PersonResponse = {
+  id: number;
+  name: string;
+  profile_path: string;
+  biography: string;
+  birthday: string;
+  place_of_birth: string;
+};

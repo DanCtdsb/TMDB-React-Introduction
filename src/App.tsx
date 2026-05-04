@@ -12,7 +12,11 @@ import {
   ErrorView,
   MoviesView,
   TelevisionView,
+  CareerView,
+  ImagesView,
 } from "@/views";
+import { PersonView } from "./views/PersonView";
+import { ModalLayout } from "./layouts/ModalLayout";
 
 export const App = () => {
   return (
@@ -32,16 +36,20 @@ export const App = () => {
         </Route>
           <Route path="/trending/:selection" element={<TrendingView />} />
           <Route path="/search" element={<SearchView />} />
-          <Route path="/:mediaType/:id" element={<MovieView />}>
-            <Route path="credits" element={<CreditsView />} />
-            <Route path="trailer" element={<TrailerView />} />
-            <Route path="reviews" element={<ReviewsView />} />
-            <Route path="seasons" element={<SeasonsView />}>
-              <Route path=":seasonNumber" element={<EpisodeView />}>
+          <Route path="/person/:id" element={<PersonView/>}>
+            <Route path="career" element={<CareerView />} />
+            <Route path="images" element={<ImagesView />} />
+          </Route>
+          <Route element={<ModalLayout />}>
+            <Route path="/:mediaType/:id" element={<MovieView />}>
+              <Route path="credits" element={<CreditsView />} />
+              <Route path="trailer" element={<TrailerView />} />
+              <Route path="reviews" element={<ReviewsView />} />
+              <Route path="seasons" element={<SeasonsView />}/>
+            <Route path="seasons/:seasonNumber" element={<EpisodeView />} />
             </Route>
           </Route>
         </Route>
-      </Route>
       <Route path="*" element={<ErrorView />} />
     </Routes>
   );

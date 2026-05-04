@@ -9,6 +9,9 @@ export * from '@/views/SeasonsView';
 export * from '@/views/TelevisionView';
 export * from '@/views/TrendingView';
 export * from '@/views/TrailerView';
+export * from '@/views/PersonView';
+export * from '@/views/CareerView';
+export * from '@/views/ImagesView';
 
 
 

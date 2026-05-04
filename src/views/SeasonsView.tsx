@@ -1,13 +1,13 @@
-import { ImageGrid } from "@/components/ImageGrid"
-import { TELEVISION_ENDPOINT } from "@/core/constants"
-import type { SeasonsResponse } from "@/core/types"
-import { useGetData } from "@/hooks"
-import { useNavigate, useParams } from "react-router-dom"
+import { ImageGrid } from "@/components";
+import { TELEVISION_ENDPOINT } from "@/core/constants";
+import type { SeasonsResponse } from "@/core/types";
+import { useGetData } from "@/hooks";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export const SeasonsView = () => {
     const navigate = useNavigate();
-    const { id } = useParams()
+    const { id } = useParams();
     const data = useGetData<SeasonsResponse>(`${TELEVISION_ENDPOINT}/${id}`, {}, [id])
     if (!data) {    
         return <div>Loading...</div>;
@@ -23,7 +23,7 @@ export const SeasonsView = () => {
     return (
         <div>
             <h2 className="text-2xl font-bold">Seasons</h2>
-            <ImageGrid results={gridDataResults} onClick={(seasonNumber) => {navigate(`/tv/${id}/season/${seasonNumber}`)}} />
+            <ImageGrid results={gridDataResults} onClick={(seasonNumber) => {navigate(`/tv/${id}/seasons/${seasonNumber}`)}} />
         </div>
     )
 }

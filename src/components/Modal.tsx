@@ -7,12 +7,20 @@ type ModalProps = {
 
 export const Modal = ({ onClose, children }: ModalProps) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-md z-50 p-4" onClick={onClose}>
+    <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50 p-4" onClick={onClose}>
       <div
-        className="w-full max-w-6xl max-h-[90vh] rounded-2xl shadow-2xl bg-gray-950 text-gray-100 relative border border-gray-800 overflow-y-auto"
+        className="w-full max-w-3xl max-h-[90vh] rounded-xl bg-[#111] border border-white/10 overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
-        {children}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 text-white/30 hover:text-white/70 transition-colors text-[13px]"
+        >
+          ✕
+        </button>
+        <div className="p-6">
+          {children}
+        </div>
       </div>
     </div>
   );

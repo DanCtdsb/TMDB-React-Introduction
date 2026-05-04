@@ -11,3 +11,4 @@ export const TRENDING_ENDPOINT = "https://api.themoviedb.org/3/trending";
 export const ORIGINAL_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 
 export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+export const PERSON_ENDPOINT = "https://api.themoviedb.org/3/person";
