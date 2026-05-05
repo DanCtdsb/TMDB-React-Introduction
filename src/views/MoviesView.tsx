@@ -19,7 +19,7 @@ export const MoviesView = () => {
         return <div>Loading...</div>;
     }
 
-    const gridDataResults = data.results.map((movie) => ({
+    const gridDataResults = (data.results ?? []).map((movie) => ({
         id: movie.id,
         imagePath: movie.poster_path || "",
         primaryText: movie.original_title || "",

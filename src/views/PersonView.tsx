@@ -2,16 +2,19 @@ import { LinkGroup } from "@/components"
 import { IMAGE_BASE_URL, PERSON_ENDPOINT } from "@/core/constants"
 import type { PersonResponse } from "@/core/types"
 import { useGetData } from "@/hooks"
-import { Outlet, useParams } from "react-router-dom"
+import { Outlet, useLocation, useParams } from "react-router-dom"
+import { CareerView } from "@/views"
 
 export const PersonView = () => {
     const { id } = useParams()
+    const location = useLocation();
     const data = useGetData<PersonResponse>(`${PERSON_ENDPOINT}/${id}`, {}, [id])
 
     if (!data) {
         return <div>Loading...</div>
     }
 
+    const isBaseRoute = location.pathname === `/person/${id}`;
     return (
         <div className="flex flex-col gap-6">
             <div className="flex gap-6">
@@ -37,7 +40,7 @@ export const PersonView = () => {
                 ]} />
             </div>
 
-            <Outlet />
+            {isBaseRoute ? <CareerView/> : <Outlet />}
         </div>
     )
 }

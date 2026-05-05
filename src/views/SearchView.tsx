@@ -25,7 +25,7 @@ export const SearchView = () => {
     return <div>Loading...</div>;
   }
 
-  const gridDataResults = data.results.map((media) => ({
+  const gridDataResults = (data.results ?? []).map((media) => ({
     id: media.id,
     imagePath: media.poster_path || media.profile_path || "",
     primaryText: media.original_name || media.original_title || "",

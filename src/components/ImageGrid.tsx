@@ -1,8 +1,9 @@
 type ImageGridProps = {
     results: Array<{
       id: number;
+      unique_id?: string;
       imagePath: string | null;
-      primaryText: string;
+      primaryText?: string;
       secondaryText?: string;
       tertiaryText?: string;
     }>;
@@ -15,7 +16,7 @@ export const ImageGrid = ({ results, onClick }: ImageGridProps) => {
     <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
       {results.map((data) => (
         <div
-          key={data.id}
+          key={data.unique_id ?? data.id}
           onClick={() => onClick?.(data.id)}
           className="group relative aspect-[2/3] cursor-pointer overflow-hidden rounded-xl bg-[#111]"
         >

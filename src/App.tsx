@@ -14,6 +14,8 @@ import {
   TelevisionView,
   CareerView,
   ImagesView,
+  HomeView,
+  GenreView
 } from "@/views";
 import { PersonView } from "./views/PersonView";
 import { ModalLayout } from "./layouts/ModalLayout";
@@ -21,12 +23,12 @@ import { ModalLayout } from "./layouts/ModalLayout";
 export const App = () => {
   return (
     <Routes>
+      <Route path="/" element={<HomeView/>} />
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Navigate to="/movie" />} />
 
         <Route
           path="/movie"
-          element={<Navigate to="/movie/category/now_playing" />}
+          element={<MoviesView/>}
         />
 
         <Route path="/movie/category/:selection" element={<MoviesView />} />
@@ -35,6 +37,7 @@ export const App = () => {
           <Route path="category/:selection" element={<TelevisionView />} />
         </Route>
           <Route path="/trending/:selection" element={<TrendingView />} />
+          <Route path = "genre/:mediaType/:genreId" element={<GenreView/>}/>
           <Route path="/search" element={<SearchView />} />
           <Route path="/person/:id" element={<PersonView/>}>
             <Route path="career" element={<CareerView />} />

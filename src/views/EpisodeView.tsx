@@ -1,23 +1,19 @@
 import { Button, ImageGrid } from "@/components";
 import { TELEVISION_ENDPOINT } from "@/core/constants";
-import type { EpisodesResponse, SeasonDetailsResponse } from "@/core/types";
+import type { EpisodesResponse } from "@/core/types";
 import { useGetData } from "@/hooks";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const EpisodeView = () => {
     const navigate = useNavigate();
     const { id, seasonNumber } = useParams();
-    const seasonData = useGetData<SeasonDetailsResponse>(`${TELEVISION_ENDPOINT}/${id}`, {}, [id]);
-    const episodeData = useGetData<EpisodesResponse>(`${TELEVISION_ENDPOINT}/${id}/season/${seasonNumber}`, {}, [id, seasonNumber]);
-    const data = seasonData?.seasons?.find(
-        (season) => season.season_number === Number(seasonNumber)
-    );
+    const data = useGetData<EpisodesResponse>(`${TELEVISION_ENDPOINT}/${id}/season/${seasonNumber}`, {}, [id, seasonNumber]);
 
-    if (!episodeData || !seasonData || !data) {
+    if ( !data) {
         return <div>Loading...</div>;
     }
 
-    const gridDataResults = episodeData.episodes.map((episode) => ({
+    const gridDataResults = data.episodes.map((episode) => ({
         id: episode.id,
         imagePath: episode.still_path || "",
         primaryText: episode.name || "",

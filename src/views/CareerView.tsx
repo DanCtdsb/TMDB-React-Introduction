@@ -12,23 +12,31 @@ export const CareerView = () => {
     {},
     [id]
   );
-  const gridDataResults = data.cast.map((career) => ({
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  const gridDataResults = (data.cast ?? []).map((career, index) => ({
     id: career.id,
+    unique_id: `${career.media_type}, ${career.id}, ${index}`,
     imagePath: career.poster_path || career.profile_path || "",
     primaryText: career.original_name || career.original_title || "",
+    secondaryText: career.character || "",
   }));
 
   return (
     <div>
       <ImageGrid
         results={gridDataResults}
-        onClick={(id) =>
+        onClick={(clickId) =>
+          {const item = data.cast.find((mediaType) => mediaType.id === clickId)
+          if (!item) {
+            return null;
+          }
           navigate(
-            `/${data.cast.find(
-              (mediaType) => mediaType.id === Number(id)
-            )}/${id}`
-          )
+            `/${item.media_type}/${item.id}`
+          );
         }
+      }
       />
     </div>
   );

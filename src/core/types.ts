@@ -63,15 +63,6 @@ export type SeasonsResponse = {
   }>;
 };
 
-export type SeasonDetailsResponse = {
-  seasons: Array<{
-    season_number: number;
-    air_date: string;
-    name: string;
-    overview: string;
-  }>
-};
-
 export type EpisodesResponse = {
   episodes: Array<{
     id: number;
@@ -80,6 +71,9 @@ export type EpisodesResponse = {
     overview: string;
     vote_average: string;
   }>;
+  name: string;
+  overview: string; 
+  air_date: string;
 };
 
 export type PersonResponse = {
@@ -99,5 +93,12 @@ export type CareerResponse = {
     poster_path?: string;
     profile_path?: string;
     media_type: string;
+    character: string;
   }>;
 };
+
+export type PersonImageResponse = {
+  profiles: Array<{
+    file_path: string;
+  }>;
+}
