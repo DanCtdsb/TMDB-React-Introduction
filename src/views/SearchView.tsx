@@ -32,6 +32,7 @@ export const SearchView = () => {
   }));
   return (
     <div>
+      <h2>Search for: {queryValue}</h2>
       <ImageGrid results={gridDataResults}  onClick={(id) => navigate(`/${mediaType}/${id}`)}/>
         <Pagination page= {page} maxPage={data.total_pages}onClick={setPage}></Pagination>
     </div>

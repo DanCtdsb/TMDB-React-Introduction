@@ -17,8 +17,6 @@ export const EpisodeView = () => {
         id: episode.id,
         imagePath: episode.still_path || "",
         primaryText: episode.name || "",
-        secondaryText: episode.overview || "",
-        tertiaryText: episode.vote_average || "",
     }));
 
     return (
@@ -36,7 +34,12 @@ export const EpisodeView = () => {
                 <h2 className="text-[13px] text-white/40 uppercase tracking-wider">Episodes</h2>
                 <ImageGrid
                     results={gridDataResults}
-                    onClick={(seasonNumber) => navigate(`/tv/${id}/season/${seasonNumber}`)}
+                    onClick={(season) => {const item = data.episodes.find((episode) => episode.id === season)
+                        if (!item) {
+                          return null;
+                        }
+                        navigate(`/tv/${id}/seasons/${seasonNumber}/${item.episode_number}`)}}
+
                 />
             </div>
         </div>

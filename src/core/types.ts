@@ -11,7 +11,8 @@ export type MediaType = {
 
 export type MediaResponse = {
   id: number;
-  title: string;
+  title?: string;
+  name?: string;
   overview: string;
   poster_path: string;
   backdrop_path: string;
@@ -63,9 +64,11 @@ export type SeasonsResponse = {
   }>;
 };
 
+
 export type EpisodesResponse = {
   episodes: Array<{
     id: number;
+    episode_number: number
     name: string;
     still_path: string;
     overview: string;
@@ -74,6 +77,15 @@ export type EpisodesResponse = {
   name: string;
   overview: string; 
   air_date: string;
+};
+
+export type SpecificEpisodesResponse = {
+  id: number;
+  episode_number: number
+  name: string;
+  still_path: string;
+  overview: string;
+  vote_average: string;
 };
 
 export type PersonResponse = {

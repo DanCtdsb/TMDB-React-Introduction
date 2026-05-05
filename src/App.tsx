@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { MainLayout } from "@/layouts/MainLayout";
 import {
   TrendingView,
@@ -15,7 +15,8 @@ import {
   CareerView,
   ImagesView,
   HomeView,
-  GenreView
+  GenreView,
+  SpecificEpisodeView
 } from "@/views";
 import { PersonView } from "./views/PersonView";
 import { ModalLayout } from "./layouts/ModalLayout";
@@ -49,7 +50,8 @@ export const App = () => {
               <Route path="trailer" element={<TrailerView />} />
               <Route path="reviews" element={<ReviewsView />} />
               <Route path="seasons" element={<SeasonsView />}/>
-            <Route path="seasons/:seasonNumber" element={<EpisodeView />} />
+            <Route path="seasons/:seasonNumber" element={<EpisodeView />}/>
+            <Route path="seasons/:seasonNumber/:episode" element={<SpecificEpisodeView />} />
             </Route>
           </Route>
         </Route>
