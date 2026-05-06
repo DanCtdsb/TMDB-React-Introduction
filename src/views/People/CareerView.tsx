@@ -10,11 +10,13 @@ export const CareerView = () => {
   const data = useGetData<CareerResponse>(
     `${PERSON_ENDPOINT}/${id}/combined_credits`,
     {},
-    [id]
+    [id],
   );
+
   if (!data) {
     return <div>Loading...</div>;
   }
+
   const gridDataResults = (data.cast ?? []).map((career, index) => ({
     id: career.id,
     unique_id: `${career.media_type}, ${career.id}, ${index}`,
@@ -24,19 +26,14 @@ export const CareerView = () => {
   }));
 
   return (
-    <div>
+    <div className="pt-6">
       <ImageGrid
         results={gridDataResults}
-        onClick={(clickId) =>
-          {const item = data.cast.find((mediaType) => mediaType.id === clickId)
-          if (!item) {
-            return null;
-          }
-          navigate(
-            `/${item.media_type}/${item.id}`
-          );
-        }
-      }
+        onClick={(clickId) => {
+          const item = data.cast.find((media) => media.id === clickId);
+          if (!item) return;
+          navigate(`/${item.media_type}/${item.id}`);
+        }}
       />
     </div>
   );

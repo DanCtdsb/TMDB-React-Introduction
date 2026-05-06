@@ -14,7 +14,7 @@ export * from '@/views/People/CareerView';
 export * from '@/views/People/ImagesView';
 export * from '@/views/HomeView';
 export * from '@/views/Media/GenreView';
-export * from '@/views/SpecificEpisodeView'
+export * from '@/views/Media/TVShows/SpecificEpisodeView'
 
 
 

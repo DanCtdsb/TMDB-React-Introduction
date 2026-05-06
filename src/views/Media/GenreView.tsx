@@ -12,8 +12,12 @@ export const GenreView = () => {
   const normalizedGenreId = genreId?.toLowerCase();
   const selectedGenre =
     mediaType === "movie"
-      ? movie_genres.find((genre) => genre.name.toLowerCase() === normalizedGenreId)
-      : tv_genres.find((genre) => genre.name.toLowerCase() === normalizedGenreId);
+      ? movie_genres.find(
+          (genre) => genre.name.toLowerCase() === normalizedGenreId,
+        )
+      : tv_genres.find(
+          (genre) => genre.name.toLowerCase() === normalizedGenreId,
+        );
 
   const data = useGetData<MediaType>(
     `${DISCOVER_ENDPOINT}/${mediaType}?with_genres=${selectedGenre?.id}`,
@@ -47,7 +51,11 @@ export const GenreView = () => {
       <div className="flex flex-col gap-3">
         <LinkGroup
           options={[
-            { label: "Movie", to: `/genre/movie/action`, match: ["/genre/movie"] },
+            {
+              label: "Movie",
+              to: `/genre/movie/action`,
+              match: ["/genre/movie"],
+            },
             { label: "TV", to: `/genre/tv/action`, match: ["/genre/tv"] },
           ]}
         />

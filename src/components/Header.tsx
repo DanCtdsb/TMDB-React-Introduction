@@ -14,10 +14,22 @@ export const Header = () => {
     <header className="flex items-center gap-3 bg-[#111] rounded-xl px-4 py-3">
       <LinkGroup
         options={[
-          { label: "Movies", to: "/movie/category/now_playing", match: ["/movie/category"]},
-          { label: "TV", to: "/television/category/airing_today", match: ["/television/category"]},
-          { label: "Trending", to: "/trending/movie",  match: ["/trending/tv"]},
-          { label: "Genre", to: "/genre/movie/action", match: ["/genre/tv", "/genre/movie"]},
+          {
+            label: "Movies",
+            to: "/movie/category/now_playing",
+            match: ["/movie/category"],
+          },
+          {
+            label: "TV",
+            to: "/television/category/airing_today",
+            match: ["/television/category"],
+          },
+          { label: "Trending", to: "/trending/movie", match: ["/trending/tv"] },
+          {
+            label: "Genre",
+            to: "/genre/movie/action",
+            match: ["/genre/tv", "/genre/movie"],
+          },
         ]}
       />
       <SearchBar
@@ -30,10 +42,10 @@ export const Header = () => {
           if (location.pathname === "/search") {
             navigate(`/search?q=${queryValue}&media=${value}`);
           }
-          setMediaState(value)
+          setMediaState(value);
         }}
         options={[
-          { label: "Movies", value: "movie"},
+          { label: "Movies", value: "movie" },
           { label: "Television", value: "tv" },
           { label: "Person", value: "person" },
         ]}

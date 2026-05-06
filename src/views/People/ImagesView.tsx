@@ -9,16 +9,18 @@ export const ImagesView = () => {
   const data = useGetData<PersonImageResponse>(
     `${PERSON_ENDPOINT}/${id}/images`,
     {},
-    [id]
+    [id],
   );
-    const gridDataResults = (data?.profiles ?? []).map((profile, index) => ({
-    id : index,
+
+  const gridDataResults = (data?.profiles ?? []).map((profile, index) => ({
+    id: index,
     unique_id: profile.file_path,
     imagePath: profile.file_path || "",
   }));
-    return (
-        <div>
-            <ImageGrid results={gridDataResults}/>
-        </div>
-    )
-}
+
+  return (
+    <div className="pt-6">
+      <ImageGrid results={gridDataResults} />
+    </div>
+  );
+};

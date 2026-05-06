@@ -1,15 +1,18 @@
-import type { ReactNode } from 'react';
-import { matchPath, NavLink, useLocation } from 'react-router-dom';
+import type { ReactNode } from "react";
+import { matchPath, NavLink, useLocation } from "react-router-dom";
 
 type LinkProps = {
   children: ReactNode;
   to: string;
   match?: string[];
+  end: boolean;
 };
 
-export const Link = ({ children, to, match = [] }: LinkProps) => {
+export const Link = ({ children, to, match = [], end = false }: LinkProps) => {
   const { pathname } = useLocation();
-  const matched = match.some((pattern) => matchPath({ path: pattern, end: false }, pathname));
+  const matched = match.some((pattern) =>
+    matchPath({ path: pattern, end }, pathname),
+  );
 
   return (
     <NavLink

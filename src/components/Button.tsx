@@ -22,8 +22,8 @@ export const Button = ({
         disabled
           ? "text-white/20 border-transparent cursor-not-allowed"
           : variant === "primary"
-          ? "text-white bg-white/12 border-white/15 hover:bg-white/18"
-          : "text-white/50 bg-transparent border-transparent hover:text-white hover:bg-white/8"
+            ? "text-white bg-white/12 border-white/15 hover:bg-white/18"
+            : "text-white/50 bg-transparent border-transparent hover:text-white hover:bg-white/8"
       }`}
     >
       {children}

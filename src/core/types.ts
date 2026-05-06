@@ -1,13 +1,13 @@
 export type MediaType = {
-    results: Array <{
-        id: number;
-        original_title?: string;
-        original_name?: string;
-        poster_path?: string;
-        profile_path?: string;
-    }>;
-    total_pages: number;
-}
+  results: Array<{
+    id: number;
+    original_title?: string;
+    original_name?: string;
+    poster_path?: string;
+    profile_path?: string;
+  }>;
+  total_pages: number;
+};
 
 export type MediaResponse = {
   id: number;
@@ -16,14 +16,17 @@ export type MediaResponse = {
   overview: string;
   poster_path: string;
   backdrop_path: string;
-  release_date: string;
+  release_date?: string;
+  first_air_date?: string;
   vote_average: string;
+  number_of_seasons?: number;
+  number_of_episodes?: number;
   results: Array<{
     id: number;
     original_title: string;
     poster_path: string;
   }>;
-  
+
   total_pages: number;
 };
 
@@ -64,24 +67,24 @@ export type SeasonsResponse = {
   }>;
 };
 
-
 export type EpisodesResponse = {
   episodes: Array<{
     id: number;
-    episode_number: number
+    episode_number: number;
     name: string;
     still_path: string;
     overview: string;
     vote_average: string;
+    air_date: string;
   }>;
   name: string;
-  overview: string; 
+  overview: string;
   air_date: string;
 };
 
 export type SpecificEpisodesResponse = {
   id: number;
-  episode_number: number
+  episode_number: number;
   name: string;
   still_path: string;
   overview: string;
@@ -113,4 +116,4 @@ export type PersonImageResponse = {
   profiles: Array<{
     file_path: string;
   }>;
-}
+};
