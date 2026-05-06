@@ -17,7 +17,7 @@ import {
   HomeView,
   GenreView
 } from "@/views";
-import { PersonView } from "./views/PersonView";
+import { PersonView } from "./views/People/PersonView";
 import { ModalLayout } from "./layouts/ModalLayout";
 
 export const App = () => {

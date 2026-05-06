@@ -1,8 +1,9 @@
-import { LinkGroup, KeyValueLabels} from "@/components"
+import { LinkGroup} from "@/components"
 import { BASE_ENDPOINT, IMAGE_BASE_URL, ORIGINAL_IMAGE_BASE_URL } from "@/core/constants"
 import type {MediaResponse } from "@/core/types"
 import { useGetData } from "@/hooks"
 import { Outlet, useParams } from "react-router-dom"
+import { FaCalendarAlt } from "react-icons/fa";
 
 export const MovieView = () => {
     const { id, mediaType } = useParams()
@@ -37,8 +38,8 @@ export const MovieView = () => {
                 <div className="flex flex-col gap-3">
                     <h1 className="text-2xl font-semibold text-white">{data.title}</h1>
                     <p className="text-[13px] text-white/50 leading-relaxed">{data.overview}</p>
-                    <KeyValueLabels label="Release Date" value={data.release_date} />
-                    <KeyValueLabels label="Rating" value={data.vote_average} />
+                    <FaCalendarAlt>{data.release_date}</FaCalendarAlt>
+                    {/* <KeyValueLabels label="Rating" value={data.vote_average} /> */}
                 </div>
             </div>
 
