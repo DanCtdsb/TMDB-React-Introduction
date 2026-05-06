@@ -13,7 +13,7 @@ export * from '@/views/People/PersonView';
 export * from '@/views/People/CareerView';
 export * from '@/views/People/ImagesView';
 export * from '@/views/HomeView';
-export * from '@/views/GenreView';
+export * from '@/views/Media/GenreView';
 export * from '@/views/SpecificEpisodeView'
 
 
