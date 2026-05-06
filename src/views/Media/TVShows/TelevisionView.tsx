@@ -31,7 +31,7 @@ export const TelevisionView = () => {
                 value={selection}
                 onClick={(value) => navigate(`/television/category/${value}`)}
                 options={[
-                    { label: "Airing Today", value: "airing_today" },
+                    { label: "Airing Today", value: "airing_today"},
                     { label: "On the Air", value: "on_the_air" },
                     { label: "Popular", value: "popular" },
                     { label: "Top Rated", value: "top_rated" },

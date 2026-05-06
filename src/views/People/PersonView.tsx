@@ -35,7 +35,7 @@ export const PersonView = () => {
 
             <div className="border-t border-white/10 pt-4">
                 <LinkGroup options={[
-                    { label: "Career", to: "career" },
+                    { label: "Career", to: "career", match: [`person/${id}`]},
                     { label: "Images", to: "images" },
                 ]} />
             </div>
